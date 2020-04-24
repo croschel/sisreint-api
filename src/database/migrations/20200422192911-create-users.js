@@ -5,7 +5,7 @@ module.exports = {
     return queryInterface.createTable('users', {
       id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: null,
         autoIncrement: true,
         primaryKey: true,
       },
