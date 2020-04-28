@@ -13,6 +13,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      nickname: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       posto_grad: {
         type: Sequelize.STRING,
         allowNull: false,
