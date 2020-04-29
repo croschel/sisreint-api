@@ -12,8 +12,8 @@ class Treatment extends Model {
         laudo_solicitado: Sequelize.INTEGER,
         laudo_confeccionado: Sequelize.INTEGER,
         sessao_fisioterapia: Sequelize.INTEGER,
-        ultima_apres: Sequelize.DATE,
-        prox_apres: Sequelize.DATE,
+        ultima_apres: Sequelize.STRING,
+        prox_apres: Sequelize.STRING,
       },
       {
         sequelize,

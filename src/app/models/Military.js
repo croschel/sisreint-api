@@ -4,30 +4,30 @@ class Military extends Model {
   static init(sequelize) {
     super.init(
       {
-        identidade: Sequelize.INTEGER,
-        cpf: Sequelize.INTEGER,
+        identidade: Sequelize.STRING,
+        cpf: Sequelize.STRING,
         nome: Sequelize.STRING,
         om: Sequelize.STRING,
         posto_grad: Sequelize.STRING,
         arma: Sequelize.STRING,
-        qms: Sequelize.STRING,
-        qmg_qmp: Sequelize.STRING,
         ex_militar: Sequelize.BOOLEAN,
-        data_nascimento: Sequelize.DATE,
-        data_praca: Sequelize.DATE,
-        situação: Sequelize.STRING,
+        data_nascimento: Sequelize.STRING,
+        data_praca: Sequelize.STRING,
+        historico: Sequelize.STRING,
+        processo: Sequelize.INTEGER,
+        situacao: Sequelize.STRING,
         tipo_data_publicacao: Sequelize.STRING,
         consequencia: Sequelize.STRING,
       },
       {
-        sequelize,
+        sequelize
       },
     );
-    return this,
+    return this;
   }
   static associate(models) {
     this.belongsToMany(models.Treatment, { foreignKey: 'treatment_id' });
   }
 }
 
-export default Military
+export default Military;

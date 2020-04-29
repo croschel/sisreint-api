@@ -5,17 +5,17 @@ module.exports = {
     return queryInterface.createTable('militaries', {
       id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: null,
         primaryKey: true,
-        autoIncrement: null,
+        autoIncrement: true,
       },
       identidade: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
         unique: true,
       },
       cpf: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
         unique: true,
       },
@@ -35,27 +35,28 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      qms: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      qmg_qmp: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       ex_militar: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
+        defaultValue: false
       },
       data_nascimento: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       data_praca: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: false,
       },
-      situação: {
+      historico: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      processo: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      situacao: {
         type: Sequelize.STRING,
         allowNull: false,
       },

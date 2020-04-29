@@ -42,11 +42,11 @@ module.exports = {
         allowNull: false,
       },
       ultima_apres: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       prox_apres: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       created_at: {

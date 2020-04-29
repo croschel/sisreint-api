@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import User from '../models/User';
 
 class UserController {
+
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
@@ -13,7 +14,7 @@ class UserController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      res.status(401).json({ error: "Input error" });
+      return res.status(401).json({ error: "Validation error" });
     }
 
     const userExists = await User.findOne({ where: { nickname: req.body.nickname } });
@@ -28,6 +29,7 @@ class UserController {
       id, name, nickname, posto_grad, email, juridico
     });
   }
+
   async update(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string(),
@@ -72,9 +74,10 @@ class UserController {
 
     return res.json(updatedUser);
   }
+
   async index(req, res) {
     const users = await User.findAll({
-      order: id
+      order: ['id']
     });
 
     if (!users) {
@@ -82,12 +85,17 @@ class UserController {
     }
     return res.json(users);
   }
+
   async delete(req, res) {
     const user = await User.findByPk(req.params.id);
     if (!user) {
       return res.status(400).json({ error: "This user does not exists" });
     }
+    await user.destroy();
+
+    return res.json({ message: "User deleted" });
   }
+
 }
 
 export default new UserController();
