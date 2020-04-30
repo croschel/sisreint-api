@@ -9,6 +9,13 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
+      military_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'militaries', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        allowNull: true,
+      },
       qtd_cons_marcada: {
         type: Sequelize.INTEGER,
         allowNull: false,

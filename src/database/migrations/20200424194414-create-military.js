@@ -68,13 +68,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      treatment_id: {
-        type: Sequelize.INTEGER,
-        references: { model: 'treatments', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
-        allowNull: true,
-      },
+
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,

@@ -25,9 +25,7 @@ class Military extends Model {
     );
     return this;
   }
-  static associate(models) {
-    this.belongsToMany(models.Treatment, { foreignKey: 'treatment_id' });
-  }
+
 }
 
 export default Military;

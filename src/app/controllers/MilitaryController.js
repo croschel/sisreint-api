@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import Military from '../models/Military';
 
 class MilitaryController {
+
   async store(req, res) {
     const schema = Yup.object().shape({
       identidade: Yup.string().required(),
@@ -28,6 +29,40 @@ class MilitaryController {
 
 
     return res.json(military);
+  }
+
+  async update(req, res) {
+    const schema = Yup.object().shape({
+      identidade: Yup.string(),
+      cpf: Yup.string(),
+      nome: Yup.string(),
+      om: Yup.string(),
+      posto_grad: Yup.string(),
+      arma: Yup.string(),
+      ex_militar: Yup.boolean(),
+      data_nascimento: Yup.string(),
+      data_praca: Yup.string(),
+      historico: Yup.string(),
+      processo: Yup.number(),
+      situacao: Yup.string(),
+      tipo_data_publicacao: Yup.string(),
+      consequencia: Yup.string(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: "Validation Error" });
+    }
+
+    const military = await Military.findByPk(req.params.id);
+
+    if (!military) {
+      return res.status(401).json({ error: "This Military does not exists" });
+    }
+
+    const militaryUpdated = await military.update(req.body);
+
+    return res.json(militaryUpdated);
+
   }
 
   async index(req, res) {

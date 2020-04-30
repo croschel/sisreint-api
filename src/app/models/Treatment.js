@@ -21,6 +21,9 @@ class Treatment extends Model {
     );
     return this;
   }
+  static associate(models) {
+    this.belongsTo(models.Military, { foreignKey: 'military_id' });
+  }
 }
 
 export default Treatment;
