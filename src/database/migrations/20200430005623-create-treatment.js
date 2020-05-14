@@ -16,6 +16,10 @@ module.exports = {
         onDelete: 'CASCADE',
         allowNull: true,
       },
+      mes_referencia: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       qtd_cons_marcada: {
         type: Sequelize.INTEGER,
         allowNull: false,

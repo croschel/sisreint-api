@@ -28,4 +28,5 @@ routes.put('/militaries/:id', MilitaryController.update);
 // Treatment Routes
 routes.post('/treatments/:military_id', TreatmentController.store);
 
+
 export default routes;
