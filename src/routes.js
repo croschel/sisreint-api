@@ -27,6 +27,7 @@ routes.get('/users/:id', UserController.show);
 // Militaries Routes
 routes.post('/militaries', MilitaryController.store);
 routes.get('/militaries', MilitaryController.index);
+routes.get('/militaries/:id', MilitaryController.show);
 routes.delete('/militaries/:id', MilitaryController.delete);
 routes.put('/militaries/:id', MilitaryController.update);
 

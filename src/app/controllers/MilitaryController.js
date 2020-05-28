@@ -70,6 +70,16 @@ class MilitaryController {
     return res.json(militaries);
   }
 
+  async show(req, res) {
+    const military = await Military.findByPk(req.params.id);
+    if (!military) {
+      return res.status(401).json({ error: "Military was not found!" });
+    }
+
+    return res.json(military);
+
+  }
+
   async delete(req, res) {
 
     const military = await Military.findByPk(req.params.id);
