@@ -31,6 +31,11 @@ class UserController {
   }
 
   async update(req, res) {
+
+    if (!req.params.id) {
+      return res.status(401).json({ error: "There's no one to search" })
+    }
+
     const schema = Yup.object().shape({
       name: Yup.string(),
       nickname: Yup.string(),
@@ -49,9 +54,15 @@ class UserController {
     }
 
     const { nickname, email, oldPassword } = req.body;
-    const user = await User.findByPk(req.userId);
+    const user = await User.findByPk(req.params.id);
 
     // Validations
+    if (nickname === undefined || email === undefined) {
+      const updatedUser = await user.update(req.body);
+
+      return res.json(updatedUser);
+    }
+
     if (nickname !== user.nickname) {
       const nickExists = await User.findOne({ where: { nickname } });
       if (nickExists) {
@@ -84,6 +95,16 @@ class UserController {
       return res.status(400).json({ error: "There's no one user on DB" });
     }
     return res.json(users);
+  }
+
+  async show(req, res) {
+    const user = await User.findByPk(req.params.id);
+    if (!user) {
+      return res.status(401).json({ error: "User was not found!" });
+    }
+
+    return res.json(user);
+
   }
 
   async delete(req, res) {
