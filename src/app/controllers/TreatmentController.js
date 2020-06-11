@@ -20,7 +20,7 @@ class TreatmentController {
     if (!(await schema.isValid(req.body))) {
       return res.status(401).json({ error: "Validation error" });
     }
-    const military = await Military.findOne(req.params.militar_id);
+    const military = await Military.findByPk(req.params.military_id);
     if (!military) {
       return res.status(400).json({ error: "Military does not exists" });
     }
@@ -30,6 +30,31 @@ class TreatmentController {
 
 
     return res.json(treatment);
+  }
+
+  async index(req, res) {
+    const { military_id } = req.params;
+
+    const military = await Military.findByPk(military_id);
+    if (!military) {
+      return res.status(400).json({ error: "Military does not exists" });
+    }
+
+    const treatments = await Treatment.findAll({
+      where: {
+        military_id,
+      },
+      include: [
+        {
+          model: Military,
+        }
+      ]
+    });
+    if (!treatments) {
+      return res.status(400).json({ error: "There's no one treatment for this military" })
+    }
+    return res.json(treatments);
+
   }
 }
 
