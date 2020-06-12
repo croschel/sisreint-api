@@ -20,6 +20,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      ano_referencia: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       qtd_cons_marcada: {
         type: Sequelize.INTEGER,
         allowNull: false,

@@ -44,6 +44,7 @@ class TreatmentController {
       where: {
         military_id,
       },
+      order: ['ano_referencia'],
       include: [
         {
           model: Military,
