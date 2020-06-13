@@ -32,7 +32,7 @@ class TreatmentController {
     return res.json(treatment);
   }
 
-  async index(req, res) {
+  async show(req, res) {
     const { military_id } = req.params;
 
     const military = await Military.findByPk(military_id);
@@ -57,6 +57,18 @@ class TreatmentController {
     return res.json(treatments);
 
   }
+
+  async index(req, res) {
+
+    const treatments = await Treatment.findAll({
+      order: ['ano_referencia'],
+    });
+    if (!treatments) {
+      return res.status(400).json({ error: "There's no one treatment" })
+    }
+    return res.json(treatments);
+  }
+
 
   async delete(req, res) {
     const { id } = req.params;
