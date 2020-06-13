@@ -57,6 +57,20 @@ class TreatmentController {
     return res.json(treatments);
 
   }
+
+  async delete(req, res) {
+    const { id } = req.params;
+    const treatment = await Treatment.findByPk(id);
+
+    if (!treatment) {
+      return res.status(400).json({ error: "Treatment does not exists" });
+    }
+    await treatment.destroy();
+
+    return res.json({ message: "Treatment was Deleted" });
+
+
+  }
 }
 
 export default new TreatmentController();
