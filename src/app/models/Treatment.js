@@ -5,7 +5,7 @@ class Treatment extends Model {
     super.init(
       {
         mes_referencia: Sequelize.STRING,
-        ano_referencia: Sequelize.STRING,
+        ano_referencia: Sequelize.INTEGER,
         qtd_cons_marcada: Sequelize.INTEGER,
         qtd_cons_realizada: Sequelize.INTEGER,
         exame_solicitado: Sequelize.INTEGER,
