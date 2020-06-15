@@ -5,6 +5,8 @@ import ProfileController from './app/controllers/ProfileController';
 import MilitaryController from './app/controllers/MilitaryController';
 import TreatmentController from './app/controllers/TreatmentController';
 import ReportController from './app/controllers/ReportController';
+import CommanderController from './app/controllers/CommanderController';
+import S1Controller from './app/controllers/S1Controller';
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -40,5 +42,14 @@ routes.delete('/treatments/:id', TreatmentController.delete);
 
 // Reports
 routes.get('/reports', ReportController.index);
+
+// Commander
+routes.put('/commander', CommanderController.update);
+routes.get('/commander', CommanderController.show);
+
+// S1 - Boss
+routes.put('/s1', S1Controller.update);
+routes.get('/s1', S1Controller.show);
+
 
 export default routes;
