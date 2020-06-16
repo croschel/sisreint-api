@@ -66,7 +66,9 @@ class MilitaryController {
   }
 
   async index(req, res) {
-    const militaries = await Military.findAll();
+    const militaries = await Military.findAll({
+      order: ['id']
+    });
     return res.json(militaries);
   }
 
